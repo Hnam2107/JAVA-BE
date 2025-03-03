@@ -6,16 +6,12 @@ public class helloword
 {
     public static void main(String[] args)
     {
-        String hoten, quequan, truonghoc, ngaysinh;
-        Scanner sc = new Scanner(System.in);
-        System.out.println ("\n Nhập Họ và tên: ");
-        hoten = sc.nextLine();
-        System.out.println ("\n Nhập Quê quán: ");
-        quequan = sc.nextLine();
-        System.out.println ("\n Nhập Ngày sinh: ");
-        ngaysinh = sc.nextLine();
-        System.out.println ("\n Nhập Trường học: ");
-        truonghoc = sc.nextLine();
-        System.out.println ("\n Xin chào " + hoten + " đến từ " + quequan + " ,sinh ngày " + ngaysinh + " trường " + truonghoc);
+        System.out.println("Nhap vao so: ");
+        int data = new Scanner(System.in).nextInt();
+        int soDaoNguoc =0;
+        while (data != 0)
+        {
+            int soDu= data % 10;
+        }
     }
 }

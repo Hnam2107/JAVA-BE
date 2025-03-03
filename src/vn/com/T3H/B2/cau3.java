@@ -10,7 +10,11 @@ public class cau3
         Scanner sc = new Scanner(System.in);
         System.out.print ("Nhập số điện : ");
         sodien = sc.nextInt();
-        if (sodien >=0 && sodien <= 50)
+        if (sodien <0)
+        {
+            System.out.println ("Số iện không hợp lệ!");
+        }
+        if (sodien>=0 && sodien <= 50)
         {
             tong = sodien * 1678;
         }else if (sodien >=51 && sodien <= 100)

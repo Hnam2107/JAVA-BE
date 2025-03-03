@@ -6,38 +6,25 @@ public class toan
 {
     public static void main(String[] args)
     {
-        float a, b;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\n Nhập a: ");
-        a = sc.nextFloat();
-        System.out.println("\n Nhập b: ");
-        b = sc.nextFloat();
-
-
+        int soAm=0, tongAm = 0;
+        int soDuong=0, tongDuong=0;
+        for (int i=0; i<=10; i++)
+        {
+            System.out.println ("Nhập số thứ " + i);
+            int data = new Scanner(System.in).nextInt();
+            System.out.println ("Số thứ: "+ data);
+             if (data <0)
+             {
+                 soAm++;
+                 tongAm = tongAm - data;
+             }
+             if (data > 0)
+             {
+                 soDuong++;
+                 tongDuong = tongDuong - data;
+             }
+             System.out.println ("So luong so âm: " + soAm);
+             System.out.println ("So luong so dương: " + soDuong);
+        }
     }
-
-        public void Tong( float a, float b)
-        {
-            float tong = a + b;
-            System.out.println("\n tổng hai số là: " + tong);
-        }
-
-        public void Tich( float a, float b)
-        {
-        float tich = a * b;
-        System.out.println("\n Tích hai số là: " + tich);
-        }
-
-        public void Thuong(float a,float b)
-        {
-            float thuong = a / b;
-            System.out.println("\n Thương hai số là: " + thuong);
-        }
-
-        public void thuong(float a,float b)
-        {
-            float soDu = a % b;
-            System.out.println("\n Số dư của thương là: " + soDu);
-        }
-
 }
