@@ -1,5 +1,6 @@
 package vn.com.T3H.B4;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -37,25 +38,25 @@ public class Btvn3
     {
         System.out.println ("Nhập mảng số nguyên: ");
         int n = new Scanner(System.in).nextInt();
-        int[] arrayNumbers = new int[n];
-        for (int i=0; i<arrayNumbers.length; i++)
+        int[] arrayNumber = new int[n];
+        for (int i=0; i<arrayNumber.length; i++)
         {
             System.out.println ("Nhập số thứ " + i + " = ");
             int number = new Scanner(System.in).nextInt();
-            arrayNumbers[i] = number;
+            arrayNumber[i] = number;
         }
 
         System.out.println ("Mảng số nguyên : ");
-        hienMang(arrayNumbers);
+        hienMang(arrayNumber);
 
-        int tongC = tongChan(arrayNumbers);
+        int tongC = tongChan(arrayNumber);
         System.out.println ("\n Tổng số chẵn trong mảng là: " + tongC);
 
-        int tongL = tongLe(arrayNumbers);
+        int tongL = tongLe(arrayNumber);
         System.out.println ("\n Tổng số lẻ trong mảng là: " + tongL);
 
         System.out.println ("Các số nguyên tố trong mảng: ");
-        for (int number : arrayNumbers)
+        for (int number : arrayNumber)
         {
             if (timSoNguyenTo(number))
             {
@@ -63,21 +64,27 @@ public class Btvn3
             }
         }
 
-        chanGiamDan(arrayNumbers);
-        hienMangChan(arrayNumbers);
+        chanGiamDan(arrayNumber);
+        hienMangChan(arrayNumber);
 
-        leTangDan(arrayNumbers);
-        hienMangLe(arrayNumbers);
+        leTangDan(arrayNumber);
+        hienMangLe(arrayNumber);
 
         System.out.println ("\n Mảng 1: ");
-        giaTriNhoBang(arrayNumbers);
+        giaTriNhoBang(arrayNumber);
 
         System.out.println ("\n Mảng 2: ");
-        giaTriLonBang(arrayNumbers);
+        giaTriLonBang(arrayNumber);
 
-        soLuongTrunglap(arrayNumbers);
+        soLuongTrunglap(arrayNumber);
 
-        themPhanTu(arrayNumbers);
+        arrayNumber = themPhanTu(arrayNumber,n);
+        System.out.println ("Mảng sau khi thêm phần tử là: " + Arrays.toString(arrayNumber));
+
+        System.out.println("Nhập phần tử cần xóa: ");
+        int deleteArrayNumbers = new Scanner(System.in).nextInt();
+        arrayNumber = xoaPhanTu(arrayNumber,deleteArrayNumbers);
+        System.out.println("Mảng sau khi xóa phần tử là: " + Arrays.toString(arrayNumber));
     }
 
     //hiện mảng số nguyên
@@ -238,7 +245,7 @@ public class Btvn3
                 if (arrayNumber[i] == arrayNumber[j])
                 {
                     cout++;
-                    System.out.println ("\n" + arrayNumber[j] + " xuất hiện " + cout + " lần.");
+                    System.out.println ("\n" + arrayNumber[j] + " trùng lặp.");
                 }
             }
         }
@@ -246,13 +253,43 @@ public class Btvn3
     }
 
     //Thêm một phần tử vào mảng tại vị trí chỉ định .
-    public static void themPhanTu (int[] arrayNumber)
+    public static int[] themPhanTu (int[] arrayNumber, int n)
     {
         System.out.println ("Nhập vị trí để thêm phần tử : ");
-        int index = new Scanner(System.in).nextInt();
+        int pos = new Scanner(System.in).nextInt();
         System.out.println ("Nhập phần tử cần chèn: " );
-        int x = new Scanner(System.in).nextInt();
-        int[] newArrayNumber = new int[index +1];
+        int value = new Scanner(System.in).nextInt();
 
+        int[] newArrayNumber = new int[arrayNumber.length + 1];
+        for (int i=0; i<n; i++)
+        {
+            newArrayNumber[i] = arrayNumber[i];
+        }
+        for (int i=n; i>pos; i--)
+        {
+            newArrayNumber[i] = arrayNumber[i-1];
+        }
+        newArrayNumber[pos] = value;
+        n++;
+        arrayNumber = Arrays.copyOf(newArrayNumber, n);
+
+        return arrayNumber;
+    }
+
+    //Xóa phần tử khỏi mảng
+    public static int[] xoaPhanTu(int[] arrayNumber, int deleteArrayNumbers)
+    {
+        int[] tempArrayNumber = new int[arrayNumber.length];
+        int newSize = 0;
+        for (int num : arrayNumber)
+        {
+            if (num != deleteArrayNumbers)
+            {
+                tempArrayNumber[newSize++] = num;
+            }
+        }
+        arrayNumber = Arrays.copyOf(tempArrayNumber, newSize);
+
+        return arrayNumber;
     }
 }

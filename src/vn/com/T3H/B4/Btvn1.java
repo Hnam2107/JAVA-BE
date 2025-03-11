@@ -26,40 +26,107 @@ import java.util.Scanner;
  c) Xóa các nguyên âm trong câu.
  */
 
-public class Btvn1
-{
+public class Btvn1 {
     public static void main(String[] args)
     {
-        String data = "Tôi học lập trình, học lập trình rất hay";
+        System.out.println ("Nhập chuỗi: ");
+        String data = new Scanner(System.in).nextLine();
+        String[] dsKyTuDacBiet = {"\\.",":","!","-",","};
+        data = chuanHoaChuoi(data, dsKyTuDacBiet);
         String[] arrayData = data.split(" ");
         for (int i = 0; i < arrayData.length; i++)
         {
             String chuoiCanDem = arrayData[i];
             boolean chuoiDaDuocKiemTra = false;
-            for (int j = 0; j < i; j++){
-                String chuoiDaDuocDem = arrayData[j];
-                if (chuoiCanDem.equalsIgnoreCase(chuoiDaDuocDem)){
+            for (int j = 0; j < i; j++)
+            {
+                String chuoiDaDem = arrayData[j];
+                if (chuoiCanDem.equalsIgnoreCase(chuoiDaDem))
+                {
                     chuoiDaDuocKiemTra = true;
                     break;
                 }
             }
-
-            int demSoLAnXuatHien =0;
-            for ( int j=i; j<arrayData.length; j++){
-                String chuoiCuaMang = arrayData[i];
-                if (chuoiCanDem.equalsIgnoreCase(chuoiCuaMang)){
-                    demSoLAnXuatHien++;
-                }
-            }
-        }
-    }
-
-    public static String chuanHoaChuoi (String data, String cacKyTuDacBiet){
-        for (int i=0; i < cacKyTuDacBiet.length(); i++){
-            String kyTuDacBiet = cacKyTuDacBiet.substring(i);
-            if (data.contains(kyTuDacBiet)){
+            if (chuoiDaDuocKiemTra){
                 continue;
             }
+
+            int cout =0;
+            for (int j=i; j<arrayData.length; j++)
+            {
+                String chuoiCuaMang = arrayData[j];
+                if (chuoiCanDem.equalsIgnoreCase(chuoiCuaMang))
+                {
+                    cout++;
+                }
+            }
+            System.out.println("Chuỗi |" + chuoiCanDem + "| xuất hiện: |" + cout);
         }
+
+        System.out.println(vietHoa(data));
+
+        System.out.println(vietHoa(xoaNguyenAm(data)));
+    }
+
+    public static String chuanHoaChuoi (String data, String[] dsKyTuDacBiet)
+    {
+        for (int i=0; i < dsKyTuDacBiet.length; i++)
+        {
+            String kyTuDacBiet = dsKyTuDacBiet[i];
+            if (!data.contains(kyTuDacBiet))
+            {
+                continue;
+            }
+            data = data.replaceAll(kyTuDacBiet, "");
+        }
+        return data;
+    }
+
+    public static String vietHoa (String data) {
+        char[] chars = data.toCharArray();
+        boolean vietHoa = true;
+        for (int i = 0; i < chars.length; i++)
+        {
+            if (vietHoa && Character.isLetter(chars[i]))
+            {
+                chars[i] = Character.toUpperCase(chars[i]);
+                vietHoa = false;
+            } else if (chars[i] == ' ') {
+                vietHoa = true;
+            }
+        }
+        return new String(chars);
+    }
+
+    public static String xoaNguyenAm (String data)
+    {
+        char[] nguyenam = {'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y',
+                'à', 'á', 'ạ', 'ả', 'ã', 'ă', 'ắ', 'ằ', 'ặ', 'ẳ', 'ẵ',
+                'â', 'ấ', 'ầ', 'ậ', 'ẩ', 'ẫ', 'è', 'é', 'ẹ', 'ẻ', 'ẽ',
+                'ê', 'ế', 'ề', 'ệ', 'ể', 'ễ', 'ì', 'í', 'ị', 'ỉ', 'ĩ',
+                'ò', 'ó', 'ọ', 'ỏ', 'õ', 'ô', 'ố', 'ồ', 'ộ', 'ổ', 'ỗ',
+                'ơ', 'ớ', 'ờ', 'ợ', 'ở', 'ỡ', 'ù', 'ú', 'ụ', 'ủ', 'ũ',
+                'ư', 'ứ', 'ừ', 'ự', 'ử', 'ữ', 'ỳ', 'ý', 'ỵ', 'ỷ', 'ỹ'};
+        char[] chars = data.toCharArray();
+        String ketqua = " ";
+        for (char c : chars)
+        {
+            boolean laNguyenAm = false;
+            for (char ng : nguyenam)
+            {
+                if (c == ng)
+                {
+                    laNguyenAm = true;
+                    break;
+                }
+            }
+
+            if (!laNguyenAm)
+            {
+                ketqua += c;
+            }
+        }
+        return ketqua;
     }
 }
+
