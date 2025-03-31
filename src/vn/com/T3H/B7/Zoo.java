@@ -26,7 +26,7 @@ public class Zoo
     {
         for(Animal animal : animals)
         {
-            animal.makeSound(); 
+            animal.makeSound();
         }
     }
 }
