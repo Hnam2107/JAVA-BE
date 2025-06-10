@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/vn/com/T3H/B12/Btvn/sql_qunlysinhvien.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/vn/com/T3H/B12/Lop/sql_demo.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/vn/com/T3H/B14/sql_baitapvenha.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/vn/com/T3H/B15/sql_atino/sql_atino.sql" dialect="MySQL" />
   </component>
 </project>

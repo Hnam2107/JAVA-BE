@@ -38,7 +38,7 @@ public class QuanLyNhanVien {
                     ql.timLuongCaoNhat();
                     break;
                 case 6:
-                    ql.timNhanVienTheoMaNhanVien();
+
                     break;
                 case 7:
                     ql.sapXepTheoTen();

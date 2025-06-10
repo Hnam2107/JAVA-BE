@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Servlet/demo-servlet/antino2/antino2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/springboot/claim" vcs="Git" />
   </component>
 </project>
